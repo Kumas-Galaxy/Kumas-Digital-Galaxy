@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KUMAS DIGITAL GALAXY</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: linear-gradient(to bottom, #87ceeb, #1e90ff);
+      animation: backgroundScroll 30s linear infinite;
+    }
+    @keyframes backgroundScroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
+    }
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body class="text-white flex items-center justify-center min-h-screen relative">
+  <div class="bg-white bg-opacity-10 p-10 rounded-2xl shadow-xl max-w-xl text-center z-10 floating">
+    <div class="mb-4">
+      <img src="logo-placeholder.png" alt="KUMAS DIGITAL GALAXY" class="mx-auto w-32 h-auto animate-pulse" />
+    </div>
+
+    <h1 id="headline" class="text-2xl md:text-3xl font-bold mb-6 transition duration-300 ease-in-out">Get Instant Access to Kumas Digital Galaxy Resources</h1>
+
+    <form action="https://sheetdb.io/api/v1/YOUR_API_ID" method="POST" onsubmit="setTimeout(() => window.location='thank-you.html', 1500);" class="space-y-4 animate-fade-in">
+      <input type="hidden" name="sheetdb" value="true">
+      <input type="text" name="name" placeholder="Your Name (Optional)" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="email" name="email" required placeholder="Your Email Address" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <select id="interest" name="interest" onchange="updateHeadline()" class="w-full px-4 py-2 rounded bg-white text-black">
+        <option value="">Select Your Main Interest</option>
+        <option value="tech">Tech Tools</option>
+        <option value="gaming">Gaming</option>
+        <option value="dating">Dating</option>
+      </select>
+      <select id="subniche" name="subniche" class="w-full px-4 py-2 rounded bg-white text-black">
+        <option value="">Select a Sub-Niche</option>
+      </select>
+      <input type="url" name="video" placeholder="Video Link (optional)" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="url" name="facebook" placeholder="Facebook Link" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="url" name="youtube" placeholder="YouTube Link" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="url" name="whatsapp" placeholder="WhatsApp Link" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="url" name="instagram" placeholder="Instagram Link" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="url" name="x" placeholder="X (Twitter) Link" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="file" name="uploadImage" accept="image/*" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <input type="file" name="uploadVideo" accept="video/*" class="w-full px-4 py-2 rounded bg-white text-black" />
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition transform hover:scale-105">Get Instant Access</button>
+    </form>
+
+    <p class="text-sm text-gray-200 mt-6 animate-fade-in">
+      Main Niche: Tech Tools. Sub-Niches: Artificial Intelligence, Cybersecurity, Web3 & Blockchain, Remote Web Tech, E-Learning, AdTech, Smart Home Technology, Wearable Tech, AR/VR.
+    </p>
+  </div>
+
+  <script>
+    function updateHeadline() {
+      const interest = document.getElementById('interest').value;
+      const headline = document.getElementById('headline');
+      const subniche = document.getElementById('subniche');
+
+      if (interest === 'tech') {
+        headline.textContent = 'Discover the Top Digital Tools Powering Smart Businesses in 2025';
+      } else if (interest === 'gaming') {
+        headline.textContent = 'Unlock Access to the Hottest Online Games & Exclusive Rewards';
+      } else if (interest === 'dating') {
+        headline.textContent = 'Find Real Connections with the Best New Dating Platforms of 2025';
+      } else {
+        headline.textContent = 'Get Instant Access to Kumas Digital Galaxy Resources';
+      }
+
+      subniche.innerHTML = '<option value="">Select a Sub-Niche</option>';
+      if (interest === 'tech') {
+        subniche.innerHTML += `<option value="ai">Artificial Intelligence</option>
+        <option value="cybersecurity">Cybersecurity</option>
+        <option value="web3">Web3 & Blockchain</option>
+        <option value="remote">Remote Web Tech</option>
+        <option value="elearning">E-Learning and AdTech</option>
+        <option value="smarthome">Smart Home Technology</option>
+        <option value="wearables">Wearable Tech</option>
+        <option value="arvr">Augmented & Virtual Reality</option>`;
+      } else if (interest === 'gaming') {
+        subniche.innerHTML += `<option value="mmorpg">MMORPGs</option>
+        <option value="fps">First-Person Shooters</option>
+        <option value="mobile">Mobile Gaming</option>
+        <option value="esports">eSports</option>
+        <option value="streaming">Streaming Platforms</option>`;
+      } else if (interest === 'dating') {
+        subniche.innerHTML += `<option value="apps">Mobile Dating Apps</option>
+        <option value="niche">Niche Dating</option>
+        <option value="video">Video Dating</option>
+        <option value="events">Virtual Dating Events</option>
+        <option value="ai">AI Matchmaking</option>`;
+      }
+    }
+  </script>
+</body>
+</html>
